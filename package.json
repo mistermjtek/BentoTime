@@ -1,0 +1,38 @@
+{
+  "name": "BentoTime",
+  "version": "0.1.0",
+  "description": "An application for reading Manga",
+  "repository": "https://github.com/Blanket-Warriors/BentoTime",
+  "main": "main.js",
+  "scripts": {
+    "test": "karma start",
+    "start": "gulp build && gulp watch & electron ."
+  },
+  "author": "Blanket Warriors",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^3.10.1",
+    "react": "^0.13.3",
+    "react-router": "^0.13.4",
+    "rx": "^4.0.0",
+    "superagent": "^1.4.0"
+  },
+  "devDependencies": {
+    "babel-core": "^5.8.25",
+    "babel-loader": "^5.3.2",
+    "core-js": "^1.2.1",
+    "electron-prebuilt": "^0.33.3",
+    "gulp": "^3.9.0",
+    "gulp-jshint": "^1.11.2",
+    "jasmine": "^2.3.2",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.13.10",
+    "karma-cli": "^0.1.1",
+    "karma-jasmine": "^0.3.6",
+    "karma-phantomjs-launcher": "^0.2.1",
+    "karma-webpack": "^1.7.0",
+    "phantomjs": "^1.9.18",
+    "sinon": "^1.17.1",
+    "webpack": "^1.12.2"
+  }
+}
