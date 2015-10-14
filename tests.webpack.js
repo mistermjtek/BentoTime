@@ -4,5 +4,5 @@
 require('core-js/es5');
 
 // Find our test files
-var context = require.context('./test', true, /Spec\.js$/);
+var context = require.context('./test', true, /Spec\.jsx?$/);
 context.keys().forEach(context);

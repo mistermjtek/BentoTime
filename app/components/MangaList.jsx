@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React from 'react';
-import MangaListItem from './MangaListItem.js';
-import requestUtilities from '../modules/requestUtilities.js';
+import MangaListItem from './MangaListItem';
+import requestUtilities from '../modules/requestUtilities';
 
 class List extends React.Component {
 

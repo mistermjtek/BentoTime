@@ -1,6 +1,6 @@
 import React from 'react';
 import TestUtils from 'react/lib/ReactTestUtils';
-import MangaList from '../../app/components/mangaList.js';
+import MangaList from '../../app/components/mangaList';
 
 describe('List Component', function() {
   it('renders', function() {

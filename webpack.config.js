@@ -16,7 +16,7 @@ var config = {};
 
 config.production = {
   entry: {
-    'react': path.resolve(__dirname, 'app/app.js')
+    'react': path.resolve(__dirname, 'app/app.jsx')
   },
   output: {
     path: path.resolve(__dirname, 'build'),
@@ -32,6 +32,9 @@ config.production = {
   },
   webpackServer: {
     noInfo: true
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx']
   }
 };
 
