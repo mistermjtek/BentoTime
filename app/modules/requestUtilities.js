@@ -2,7 +2,6 @@ import Rx from 'rx';
 import _ from 'lodash';
 import request from 'superagent';
 
-
 let api = {
   baseHost: 'http://www.mangaeden.com/',
   imgHost: 'http://cdn.mangaeden.com/mangasimg/'

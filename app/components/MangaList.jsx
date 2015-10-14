@@ -1,10 +1,9 @@
 import _ from 'lodash';
 import React from 'react';
-import MangaListItem from './MangaListItem.js';
-import requestUtilities from '../modules/requestUtilities.js';
+import MangaListItem from './MangaListItem';
+import requestUtilities from '../modules/requestUtilities';
 
-class List extends React.Component {
-
+export default class List extends React.Component {
   constructor(props) {
     super();
     this.state = {
@@ -13,9 +12,9 @@ class List extends React.Component {
   }
 
   componentDidMount() {
-    requestUtilities.getData$({img: false, data: 'api/list/0/'}).subscribe({
+    requestUtilities.getData$( {img: false, data: 'api/list/0/'}).forEach( {
       onNext: response => {
-        this.setState({
+        this.setState( {
           manga: response.manga.slice()
         })
       },
@@ -25,16 +24,14 @@ class List extends React.Component {
   }
 
   render() {
-    let mangaList = _.map(this.state.manga, function(item){
+    let mangaList = _.map(this.state.manga, item => {
       return <MangaListItem key={item.i} name={item.t} />
     });
 
     return (
       <ul>
-        { mangaList.length > 0 ? mangaList : <h1>Loading Manga...</h1> }
+        {mangaList.length > 0 ? mangaList : <h1>Loading Manga...</h1>}
       </ul>
     );
   }
 }
-
-export default List;
