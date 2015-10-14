@@ -7,7 +7,9 @@ export default class List extends React.Component {
   constructor(props) {
     super();
     this.state = {
-      manga: []
+      manga: [],
+      search: '',
+      filtered: []
     };
   }
 
@@ -23,12 +25,48 @@ export default class List extends React.Component {
     });
   }
 
+  filter(item) {
+    var search = this.state.search;
+    var check = function(toCheck) {
+      if(typeof toCheck === 'string' || typeof toCheck === 'number'){
+        return Boolean(toCheck.match(new RegExp(search, 'ig')));
+      }
+      if(typeof toCheck === 'object') {
+        return _.some(toCheck, function(item) {
+          return check(item);
+        });
+      }
+      return false;
+    };
+    return check([item.title, item.author.name, item.date, item.tags]);
+  }
+
+  _onSearchUpdate(event) {
+    this.setState({search: event.target.value}, _.bind(function(){
+      this.setState({
+        filtered: _.filter(this.state.unfiltered, _.bind(this.filter, this))
+      });
+    }, this));
+  }
+
+  _resetSearch() {
+    this.setState({search: ''}, _.bind(function(){
+      this.setState({
+        filtered: _.filter(this.state.unfiltered, _.bind(this.filter, this))
+      });
+    }, this));
+  }
+
+
   render() {
     let mangaList = _.map(this.state.manga, item => {
       return <MangaListItem key={item.i} name={item.t} />
     });
 
     return (
+      <div className="searchWrapper">
+        <input type="search" placeholder="Search for a manga" className="search" value={this.state.search} onChange={this._onSearchUpdate} />
+      </div>
       <ul>
         {mangaList.length > 0 ? mangaList : <h1>Loading Manga...</h1>}
       </ul>
