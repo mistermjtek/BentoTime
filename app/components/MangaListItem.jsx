@@ -4,12 +4,15 @@ import requestUtilities from '../modules/requestUtilities';
 
 export default class List extends React.Component {
   constructor(props) {
-    super();
+    super(props);
   }
 
   render() {
     return (
-      <li>{this.props.name}</li>
+      <li>
+        {this.props.name}
+        <img src={requestUtilities.getImageUrl(this.props.image)} />
+      </li>
     );
   }
 }

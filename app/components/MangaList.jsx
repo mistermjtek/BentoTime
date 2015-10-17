@@ -5,18 +5,18 @@ import requestUtilities from '../modules/requestUtilities';
 
 export default class List extends React.Component {
   constructor(props) {
-    super();
+    super(props);
     this.state = {
       manga: []
     };
   }
 
   componentDidMount() {
-    requestUtilities.getData$( {img: false, data: 'api/list/0/'}).forEach( {
+    requestUtilities.getListByPage$(0).forEach( {
       onNext: response => {
         this.setState( {
           manga: response.manga.slice()
-        })
+        });
       },
       onError: error => console.error(error),
       onCompleted: () => {}
@@ -25,7 +25,9 @@ export default class List extends React.Component {
 
   render() {
     let mangaList = _.map(this.state.manga, item => {
-      return <MangaListItem key={item.i} name={item.t} />
+      if(item.im) {
+        return <MangaListItem key={item.i} name={item.t} image={item.im} />
+      }
     });
 
     return (

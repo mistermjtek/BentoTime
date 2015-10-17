@@ -2,17 +2,25 @@ import Rx from 'rx';
 import _ from 'lodash';
 import request from 'superagent';
 
-let api = {
+const api = {
   baseHost: 'http://www.mangaeden.com/',
-  imgHost: 'http://cdn.mangaeden.com/mangasimg/'
+  imgHost: 'http://cdn.mangaeden.com/mangasimg/',
 };
 
-api.getData = function(options, callback) {
+api.getData = (options, callback) => {
   request
     .get((!!options.img ? api.imgHost : api.baseHost) + options.data)
     .end((error, response) => callback(error, response && response.body));
 };
 
-api.getData$ = Rx.Observable.fromNodeCallback(api.getData.bind(api))
+api.getData$ = Rx.Observable.fromNodeCallback(_.bind(api.getData, api));
+
+_.extend(api, {
+  getList$: () => api.getData$({data: 'api/list/0/'}),
+  getListByPage$: (page) => api.getData$({data: `api/list/0/?p=${page}`}),
+  getManga$: (id) => api.getData$({data: `api/manga/${id}/`}),
+  getChapter$: (id) => api.getData$({data: `api/chapter/${id}/`}),
+  getImageUrl: (url) => api.imgHost + url
+});
 
 export default api

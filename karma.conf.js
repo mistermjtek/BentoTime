@@ -1,18 +1,23 @@
-// Sets up Karma to run tests with PhantomJS.
-// PhantomJS helps with simulating xhr.
+require('core-js/es5');
 
 module.exports = function(config) {
   config.set({
-    browsers: ['PhantomJS'],
+    browsers: ['PhantomJS_without_security'],
     files: [
-      { pattern: 'tests.webpack.js', watched: false },
+      'test/**/*.js'
     ],
     frameworks: ['jasmine'],
     preprocessors: {
-      'tests.webpack.js': ['webpack']
+      'test/**/*.js': ['webpack']
     },
     reporters: ['progress'],
     singleRun: true,
+    customLaunchers: {
+      PhantomJS_without_security: {
+        base: 'PhantomJS',
+        flags: ['--web-security=no']
+      }
+    },
     webpack: {
       module: {
         loaders: [
