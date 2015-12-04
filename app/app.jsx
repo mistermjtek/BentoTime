@@ -1,5 +1,7 @@
-'use strict';
 import React from 'react';
-import List from './components/MangaList';
+import { render } from 'react-dom';
+import List from 'components/MangaList';
+import 'stylesheets/style';
 
-React.render(<List />, document.body);
+const mountPoint = document.getElementsByTagName('div')[0];
+render(<List />, mountPoint);

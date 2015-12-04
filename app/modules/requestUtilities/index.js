@@ -4,12 +4,12 @@ import request from 'superagent';
 
 const api = {
   baseHost: 'http://www.mangaeden.com/',
-  imgHost: 'http://cdn.mangaeden.com/mangasimg/',
+  imgHost: 'http://cdn.mangaeden.com/mangasimg/'
 };
 
 api.getData = (options, callback) => {
   request
-    .get((!!options.img ? api.imgHost : api.baseHost) + options.data)
+    .get((options.img ? api.imgHost : api.baseHost) + options.data)
     .end((error, response) => callback(error, response && response.body));
 };
 
@@ -23,4 +23,4 @@ _.extend(api, {
   getImageUrl: (url) => api.imgHost + url
 });
 
-export default api
+export default api;
