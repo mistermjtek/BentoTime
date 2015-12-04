@@ -9,9 +9,9 @@ export default class List extends React.Component {
 
   render() {
     return (
-      <li>
-        {this.props.name}
-        <img src={requestUtilities.getImageUrl(this.props.image)} />
+      <li className="list-item">
+        <h1 className="list-item__name">{this.props.name}</h1>
+        <img className="list-item__image" src={requestUtilities.getImageUrl(this.props.image)} />
       </li>
     );
   }

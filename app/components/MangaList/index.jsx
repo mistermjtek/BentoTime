@@ -31,7 +31,7 @@ export default class List extends React.Component {
     });
 
     return (
-      <ul>
+      <ul className="manga-list">
         {mangaList.length > 0 ? mangaList : <h1>Loading Manga...</h1>}
       </ul>
     );
