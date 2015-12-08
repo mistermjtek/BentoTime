@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React from 'react';
-import MangaListItem from './MangaListItem';
-import requestUtilities from '../modules/requestUtilities';
+import MangaListItem from 'components/MangaListItem';
+import requestUtilities from 'modules/requestUtilities';
 
 export default class List extends React.Component {
   constructor(props) {
@@ -26,12 +26,12 @@ export default class List extends React.Component {
   render() {
     let mangaList = _.map(this.state.manga, item => {
       if(item.im) {
-        return <MangaListItem key={item.i} name={item.t} image={item.im} />
+        return <MangaListItem key={item.i} name={item.t} image={item.im} />;
       }
     });
 
     return (
-      <ul>
+      <ul className="manga-list">
         {mangaList.length > 0 ? mangaList : <h1>Loading Manga...</h1>}
       </ul>
     );

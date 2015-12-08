@@ -1,36 +1,35 @@
-require('core-js/es5');
+var webpackConfig = require('./webpack.config.js');
 
 module.exports = function(config) {
   config.set({
-    browsers: ['PhantomJS_without_security'],
     files: [
-      'test/**/*.js'
+      'tests.webpack.js'
     ],
-    frameworks: ['jasmine'],
     preprocessors: {
-      'test/**/*.js': ['webpack']
+      'tests.webpack.js': ['webpack', 'sourcemap']
     },
-    reporters: ['progress'],
+    browsers: ['Chrome_without_security'],
+    frameworks: ['mocha', 'chai', 'sinon'],
+    reporters: ['mocha'],
     singleRun: true,
     customLaunchers: {
-      PhantomJS_without_security: {
-        base: 'PhantomJS',
+      Chrome_without_security: {
+        base: 'Chrome',
         flags: ['--web-security=no']
       }
     },
-    webpack: {
-      module: {
-        loaders: [
-          { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader'}
-        ]
-      },
-      resolve: {
-        extensions: ['','.js','.jsx']
-      },
-      watch: true
-    },
+    webpack: webpackConfig.default,
     webpackServer: {
       noInfo: true
-    }
+    },
+    plugins: [
+      'karma-chai',
+      'karma-mocha',
+      'karma-sinon',
+      'karma-webpack',
+      'karma-mocha-reporter',
+      'karma-chrome-launcher',
+      'karma-sourcemap-loader'
+    ]
   });
 };
