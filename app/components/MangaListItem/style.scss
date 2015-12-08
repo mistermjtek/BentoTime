@@ -1,0 +1,12 @@
+.list-item {
+	@include row();
+	@include columns(6);
+	list-style: none;
+	text-align: center;
+	padding: auto;
+}
+
+.list-item__image {
+	@include columns(4);
+	float: none;
+}
