@@ -73,6 +73,12 @@ $botMinWidth: 480px;
 @mixin row {
   @include clearfix;
   margin-bottom: 2 * $margin;
+
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
 }
 
 @mixin alpha { margin-left: 0; }
@@ -171,4 +177,22 @@ $botMinWidth: 480px;
   visibility: hidden;
   width: 0;
   height: 0;
+}
+
+@mixin full-width {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@mixin max-full-width {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+@mixin pull-right {
+  float: right;
+}
+
+@mixin pull-left {
+  float: left;
 }

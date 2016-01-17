@@ -4,9 +4,17 @@
 	list-style: none;
 	text-align: center;
 	padding: auto;
+	text-overflow: ellipsis;
 }
 
 .list-item__image {
 	@include columns(4);
 	float: none;
+	height: 300px;
+}
+
+.list-item__name {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 }
