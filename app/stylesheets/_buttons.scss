@@ -1,6 +1,8 @@
 /* Buttons
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
+$hover-primary: #1EAEDB;
+
 .button, button {
   display: inline-block;
   height: 38px;
@@ -87,28 +89,28 @@ input {
 
 .button.button-primary:hover, button.button-primary:hover {
   color: #FFF;
-  background-color: #1EAEDB;
-  border-color: #1EAEDB;
+  background-color: $hover-primary;
+  border-color: $hover-primary;
 }
 
 input {
   &[type="submit"].button-primary:hover, &[type="reset"].button-primary:hover, &[type="button"].button-primary:hover {
     color: #FFF;
-    background-color: #1EAEDB;
-    border-color: #1EAEDB;
+    background-color: $hover-primary;
+    border-color: $hover-primary;
   }
 }
 
 .button.button-primary:focus, button.button-primary:focus {
   color: #FFF;
-  background-color: #1EAEDB;
-  border-color: #1EAEDB;
+  background-color: $hover-primary;
+  border-color: $hover-primary;
 }
 
 input {
   &[type="submit"].button-primary:focus, &[type="reset"].button-primary:focus, &[type="button"].button-primary:focus {
     color: #FFF;
-    background-color: #1EAEDB;
-    border-color: #1EAEDB;
+    background-color: $hover-primary;
+    border-color: $hover-primary;
   }
 }
